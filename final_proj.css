@@ -1,26 +1,40 @@
-h1 {
-    color: #ff6699;
-    font-family: Menlo;
-    font-size: 250%;
-    font-variant: no-common-ligatures;
+body {
+    font: large 'Menlo', sans-serif;
 }
 
-p {
-    background: #00ccff;
-    font-family: Menlo;
+h1 {
     font-size: 150%;
     font-style: oblique 60deg;
+    font-weight: bold;
 }
 
-[label for~="text"] {
-    font-family: Menlo;
-    color: #ffffff;
-    text-shadow: 2px 2px #000000;
-    font-size: 110%;
-    font-variant: no-common-ligatures;
-    background: #ffb3b3;
-    border-radius: 25px;
-    padding: 10px;
+form {
     width: 500px;
-    height: 100px;
+    height: 500px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+input[type=text] {
+    font-size: 100%
+    width: 100%;
+    box-sizing: content-box;
+    
+/* results section is invisible */
+section#results {
+    display: none;
+}
+    
+table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+    
+table thead td {
+    font-weight: bold;
+}
+    
+table td {
+    border: 1px solid black;
+    padding: 5px, 8px;
 }
