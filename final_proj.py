@@ -22,7 +22,7 @@ def blastn():
     out_file = os.path.join(base_path, "blastn_results.csv")
     
     #connect to sql database
-    conn = mysql.connector.connect(user='hopkins', password='fakepass', host='localhost', database='xxx')
+    conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='xxx')
     cursor = conn.cursor()
 
     #generate BLASTn output as csv
