@@ -16,3 +16,7 @@ To update your Python version on Ubuntu 16.10+:
 <p><code> sudo apt-get update </p></code>
 <p><code> sudo apt-get install python3.6 </p></code>
 
+After downloading all needed scripts for this package, access the html through:
+<p><code> https://bfx3.aap.jhu.edu/jvo5/final_proj/final_proj.html </p></code>
+
+Paste your FASTA sequence into the search box and submit query. 
