@@ -7,7 +7,7 @@ Things you have to download:
 
 pdf2image documentation:
 <p>https://pypi.org/project/pdf2image/</p>
-
+<p></p>
 This module only works on Python 3.5+ and converts a PDF to a PIL Image object. To find your Python version:
 <p> Linux: </p>
 <p><code> $ python --version </code></p>
@@ -17,7 +17,7 @@ This module only works on Python 3.5+ and converts a PDF to a PIL Image object. 
 To update your Python version on Ubuntu 16.10+:
 <p><code> sudo apt-get update </p></code>
 <p><code> sudo apt-get install python3.6 </p></code>
-
+<p></p>
 Install R on your server. This is R 4.0.0, the most resent version:
 <p>Add the GPG key:</p>
 <p><code> sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 </code></p>
