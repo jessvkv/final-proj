@@ -32,7 +32,7 @@ function processJSON( data ) {
     // this will be used to keep track of row identifiers
     var next_row = 1;
     
-    // iterate over each match and add a row to the result table for each
+    // iterate matches and add a row to the result table for each match
     $.each( data.matches, function(i, item) {
         var row_id = 'result_row_' + next_row++;
     
