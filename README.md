@@ -23,4 +23,4 @@ After downloading all needed scripts for this package, access the html through:
 
 Paste your FASTA sequence into the search box and submit query. 
 
-<strikethrough>If there are any problems pls don't ask me bc I probably don't know how to fix it </strikethrough>
+<strike>If there are any problems pls don't ask me bc I probably don't know how to fix it </strike>
