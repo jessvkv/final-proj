@@ -8,6 +8,8 @@ import mysql.connector
 import subprocess
 import pandas as pd
 from pdf2image import convert_from_path
+import tarfile
+from os import path
 
 def blastn():
 
@@ -99,6 +101,13 @@ def main():
     pages = convert_from_path('myBLAST_alignment', 500)
     for page in pages:
         page.save('myBLAST_alignment.png', 'PNG')
+       
         
 if __name__ == '__main__':
     main()
+    
+#------------------------------------------------------------------------------------------------#
+#I guess if you wildin' here's a tar.gz file
+def make_tarfile(BLAST_results, source_dir):
+    with tarfile.open(BLAST_results, "w:gz") as tar:
+        tar.add(source_dir, arcname = os.path.basename(source_dir))
