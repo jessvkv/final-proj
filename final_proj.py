@@ -94,17 +94,16 @@ def main():
     R_run = subprocess.run(cmd)
     
     print(json.dumps(results))
-
-    pages = convert_from_path('myBLAST_alignment', 500)
-    for page in pages:
-        page.save('myBLAST_alignment.png', 'PNG')
-       
-        
+   
 if __name__ == '__main__':
     main()
     
-#------------------------------------------------------------------------------------------------#
-#I guess if you wildin' here's a tar.gz file
+#myBLAST_alignment is the R output as pdf. This will save to the server.
+pages = convert_from_path('myBLAST_alignment', 500)
+for page in pages:
+    page.save('myBLAST_alignment.png', 'PNG')
+       
+#I guess if you wildin' here's a tar.gz file of the blastn DB
 def make_tarfile(BLAST_results, source_dir):
     with tarfile.open(BLAST_results, "w:gz") as tar:
         tar.add(source_dir, arcname = os.path.basename(source_dir))
