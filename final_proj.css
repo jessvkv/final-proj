@@ -12,7 +12,7 @@ p {
     font-style: oblique 60deg;
 }
 
-[label for~="file"] {
+[label for~="text"] {
     font-family: Menlo;
     color: #ffffff;
     text-shadow: 2px 2px #000000;
