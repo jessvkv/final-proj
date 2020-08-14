@@ -14,10 +14,8 @@ from os import path
 def blastn():
 
     #define variables and paths
-    print("Content-Type: text/html\n\n")
-    print("It worked\n")
     form = cgi.FieldStorage()
-    file = form.getvalue("search_file")
+    seq_text = form.getvalue("search_text")
     base_path = os.path.join("/var/www/html/jvo5/final")
     out_file = os.path.join(base_path, "blastn_results.csv")
     
@@ -27,7 +25,7 @@ def blastn():
 
     #generate BLASTn output as csv
     print("...generating BLASTn matches...")
-    thisCommand = ' '.join(['blastn', '-query', file, '-out', out_file, '-dbtype', 'nucl', "-outfmt 10 qseqid qacc qlen sacc slen qstart qend \
+    thisCommand = ' '.join(['blastn', '-query', seq_text, '-out', "blastn_results.csv", '-dbtype', 'nucl', "-outfmt 10 qseqid qacc qlen sacc slen qstart qend \
                              qseq evalue length pident mismatch", '-max_target_seqs', '10'])
     blast_run = subprocess.run(thisCommand)
 
@@ -94,7 +92,6 @@ def main():
     #check_output runs command and store result
     R_check = subprocess.check_output(cmd, universal_newlines=True)
     R_run = subprocess.run(cmd)
-    #reference r-run in html?
     
     print(json.dumps(results))
 
