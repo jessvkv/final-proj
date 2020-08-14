@@ -1,0 +1,26 @@
+h1 {
+    color: #ff6699;
+    font-family: Menlo;
+    font-size: 250%;
+    font-variant: no-common-ligatures;
+}
+
+p {
+    background: #00ccff;
+    font-family: Menlo;
+    font-size: 150%;
+    font-style: oblique 60deg;
+}
+
+[label for~="file"] {
+    font-family: Menlo;
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 110%;
+    font-variant: no-common-ligatures;
+    background: #ffb3b3;
+    border-radius: 25px;
+    padding: 10px;
+    width: 500px;
+    height: 100px;
+}
