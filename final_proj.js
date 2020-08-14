@@ -36,7 +36,7 @@ function processJSON( data ) {
     $.each( data.matches, function(i, item) {
         var row_id = 'result_row_' + next_row++;
     
-        // create a row and append it to the body of the table
+        // append new row to end of table
         $('<tr/>', { "id" : row_id } ).appendTo('tbody');
 
     });
