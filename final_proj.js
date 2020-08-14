@@ -26,19 +26,18 @@ function runSearch( ) {
 }       
 
 
-// this processes a passed JSON structure representing gene matches and draws it
-//  to the result table
+// process JSON that has gene matches and adds to results table 
 function processJSON( data ) { 
     
     // this will be used to keep track of row identifiers
-    var next_row_num = 1;
+    var next_row = 1;
     
     // iterate over each match and add a row to the result table for each
     $.each( data.matches, function(i, item) {
-        var this_row_id = 'result_row_' + next_row_num++;
+        var row_id = 'result_row_' + next_row++;
     
         // create a row and append it to the body of the table
-        $('<tr/>', { "id" : this_row_id } ).appendTo('tbody');
+        $('<tr/>', { "id" : row_id } ).appendTo('tbody');
 
     });
     
