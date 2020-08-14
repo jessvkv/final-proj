@@ -42,6 +42,6 @@ R documentation:
 After downloading all needed scripts for this package, access the html through:
 <p><code> https://bfx3.aap.jhu.edu/jvo5/final_proj/final_proj.html </p></code>
 
-Paste your FASTA sequence into the search box and submit query. 
+Paste your FASTA sequence into the search box and submit query. Your BLASTn results will be downloaded as a tar.gz file. Your MSA alignment will be downloaded as a PNG image.
 
 <strike>If there are any problems pls don't ask me bc I probably don't know how to fix it </strike>
