@@ -44,7 +44,7 @@ def blastn():
     #insert pd df data into table
     results= {}
     for row in data.itertuples():
-        cursor.execute('''
+        cursor.execute(('''
                     INSERT INTO jvo5.dbo.blastn_info (qseqid, qacc, qlen, sacc, slen, qstart, qend, qseq, evalue, length, pident, mismatch) 
                     VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
                     '''),
