@@ -7,23 +7,20 @@ function runSearch( ) {
     $('tbody').empty();
 
     // make form parameters into string to send to server
-    var frmStr = $('#gene_search').serialize();
+    var strdata = $('#gene_search').serialize();
 
-    $("#file").xxx
-        source: function(request, response){
-            $.ajax({
-                url: './final_proj.cgi',
-                dataType: 'JSON',
-                data: frmStr,
-                method: 'GET',
-                success: function( ) {
-                    processJSON(data);
-                },
-                    //direct result to html
-                    $('#form-result').html(data)
-            });
-        }
-}       
+    $.ajax({
+        url: './final_proj.cgi',
+        dataType: 'JSON',
+        data: strdata,
+        method: 'GET',
+        success: function(data, textStatus, jqXHR) {
+            processJSON(data);
+        },
+            //direct result to html
+            $('#form-result').html(data)
+    });
+      
 
 
 // process JSON that has gene matches and adds to results table 
