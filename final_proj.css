@@ -17,9 +17,10 @@ form {
 
 input[type=text] {
     font-size: 100%
-    width: 100%;
-    box-sizing: content-box;
-    
+    width: 300px;
+    height: 100px;
+    word-wrap: break-word;
+
 /* results section is invisible */
 section#results {
     display: none;
