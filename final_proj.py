@@ -20,7 +20,7 @@ def blastn():
     out_file = os.path.join(base_path, "blastn_results.csv")
     
     #connect to sql database
-    conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='xxx')
+    conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='jvo5')
     cursor = conn.cursor()
 
     #generate BLASTn output as csv
@@ -45,7 +45,7 @@ def blastn():
     results= {}
     for row in data.itertuples():
         cursor.execute('''
-                    INSERT INTO XXX.dbo.blastn_info (qseqid, qacc, qlen, sacc, slen, qstart, qend, qseq, evalue, length, pident, mismatch) #xxx is database make a name for it
+                    INSERT INTO jvo5.dbo.blastn_info (qseqid, qacc, qlen, sacc, slen, qstart, qend, qseq, evalue, length, pident, mismatch) 
                     VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
                     '''),
                     row.qseqid,
