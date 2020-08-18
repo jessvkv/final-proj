@@ -30,7 +30,7 @@ def blastn():
     blast_run = subprocess.run(thisCommand)
 
     #create dataframe of BLASTn output
-    data = pd.read_csv(r "blast_results.csv")
+    data = pd.read_csv("blast_results.csv")
     #df = pd.DataFrame(data, columns = ["qseqid", "qacc", "qlen", "sacc", "slen", "qstart", "qend", "qseq", "evalue", "length", "pident", "mismatch"])
 
     #print(json.dumps(df)) #not sure abt this
