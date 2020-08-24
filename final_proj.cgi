@@ -1,4 +1,4 @@
-#!/usr/local/bin/env python
+#!/usr/local/bin/env python3
 #!/usr/local/bin/blastn
 
 import cgi
