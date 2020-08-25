@@ -20,8 +20,8 @@ def blastn():
     #blastn_path = os.path.join(base_path, "blastn.py")
     
     #connect to sql database
-   # conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='jvo5')
-    #cursor = conn.cursor()
+    conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='jvo5')
+    cursor = conn.cursor()
 
     #generate BLASTn output as csv
     print("...generating BLASTn matches...")
@@ -31,21 +31,48 @@ def blastn():
 
     #create dataframe of BLASTn output
     data = pd.read_csv("blast_results.csv")
-    #df = pd.DataFrame(data, columns = ["qseqid", "qacc", "qlen", "sacc", "slen", "qstart", "qend", "qseq", "evalue", "length", "pident", "mismatch"])
-
+    
     #print(json.dumps(df)) #not sure abt this
-
-    #print("...creating BLASTn database...")
+    print("...creating BLASTn database...")
 
     #create DB in SQL
-  #  cursor.execute("CREATE TABLE blastn_info (qseqid varchar(50), qacc varchar(50), qlen int, sacc varchar(50), slen int, qstart int, \
-   #                 qend int, qseq varchar(50), evalue int, length int, pident int, mismatch int)")
+    cursor.execute("CREATE TABLE blastn_info (qseqid varchar(50), qacc varchar(50), qlen int, sacc varchar(50), slen int, qstart int, \
+                    qend int, qseq varchar(50), evalue int, length int, pident int, mismatch int)")
 
     #insert pd df data into table
-   
+    results= {}
+    for row in data.itertuples():
+        cursor.execute(('''
+                    INSERT INTO jvo5.dbo.blastn_info (qseqid, qacc, qlen, sacc, slen, qstart, qend, qseq, evalue, length, pident, mismatch) 
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+                    '''),
+                    row.qseqid,
+                    row.qacc,
+                    row.qlen,
+                    row.sacc,
+                    row.slen,
+                    row.qstart,
+                    row.qend,
+                    row.evalue,
+                    row.length,
+                    row.pident,
+                    row.mismatch
+                    )
+
+        results[row.qseqid] = [row.qseqid,
+                    row.qacc,
+                    row.qlen,
+                    row.sacc,
+                    row.slen,
+                    row.qstart,
+                    row.qend,
+                    row.evalue,
+                    row.length,
+                    row.pident,
+                    row.mismatch]
 
     conn.close()         
-    return blast_run
+    return results
 
 def main():
     results = blastn()
@@ -58,11 +85,11 @@ def main():
     #args = ["X"]
 
     #Build subproccess command
-    cmd = [command, R_path] + args
+    cmd = [command, R_path]
 
     #check_output runs command and store result
-    R_check = subprocess.check_output(cmd, universal_newlines=True)
-    R_run = subprocess.run(cmd)
+    R_check = subprocess.check_output(cmd, universal_newlines=TRUE)
+    R_run = subprocess.run(cmd, shell=TRUE)
     
     print(json.dumps(results))
    
@@ -76,4 +103,4 @@ for page in pages:
        
 #I guess if you wildin' here's a tar.gz file of the blastn DB
 tarfile = " ".join(['tar', '-czvf', 'BLAST_results', '/var/www/html/jvo5/final-proj/blastn_results.csv'])
-tar_run = subprocess.run(tarfile)
+tar_run = subprocess.run(tarfile, shell=TRUE)
