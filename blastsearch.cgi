@@ -15,9 +15,9 @@ def blastn():
     #define variables and paths
     form = cgi.FieldStorage()
     seq_text = form.getvalue("search_text")
-    base_path = os.path.join("/var/www/html/jvo5/final")
+    base_path = os.path.join("/var/www/html/jvo5/final-proj")
     out_file = os.path.join(base_path, "blastn_results.csv")
-    blastn_path = os.path.join("/var/www/html/jvo5/final/final-proj/blastn.cgi")
+    #blastn_path = os.path.join(base_path, "blastn.py")
     
     #connect to sql database
     conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='jvo5')
@@ -25,7 +25,9 @@ def blastn():
 
     #generate BLASTn output as csv
     print("...generating BLASTn matches...")
-    blast_run = subprocess.run(blastn_path)
+    thisCommand = ' '.join(['blastn', '-query', seq_text, '-out', "blastn_results.csv", '-dbtype', 'nucl', "-outfmt 10 qseqid qacc qlen sacc slen qstart qend \
+                         qseq evalue length pident mismatch", '-max_target_seqs', '10'])
+    blast_run = subprocess.run(thisCommand)
 
     #create dataframe of BLASTn output
     data = pd.read_csv("blast_results.csv")
