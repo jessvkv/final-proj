@@ -20,8 +20,8 @@ def blastn():
     #blastn_path = os.path.join(base_path, "blastn.py")
     
     #connect to sql database
-    conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='jvo5')
-    cursor = conn.cursor()
+   # conn = mysql.connector.connect(user='jvo5', password='Mor!@2012', host='localhost', database='jvo5')
+    #cursor = conn.cursor()
 
     #generate BLASTn output as csv
     print("...generating BLASTn matches...")
@@ -35,46 +35,17 @@ def blastn():
 
     #print(json.dumps(df)) #not sure abt this
 
-    print("...creating BLASTn database...")
+    #print("...creating BLASTn database...")
 
     #create DB in SQL
-    cursor.execute("CREATE TABLE blastn_info (qseqid varchar(50), qacc varchar(50), qlen int, sacc varchar(50), slen int, qstart int, \
-                    qend int, qseq varchar(50), evalue int, length int, pident int, mismatch int)")
+  #  cursor.execute("CREATE TABLE blastn_info (qseqid varchar(50), qacc varchar(50), qlen int, sacc varchar(50), slen int, qstart int, \
+   #                 qend int, qseq varchar(50), evalue int, length int, pident int, mismatch int)")
 
     #insert pd df data into table
-    results= {}
-    for row in data.itertuples():
-        cursor.execute(('''
-                    INSERT INTO jvo5.dbo.blastn_info (qseqid, qacc, qlen, sacc, slen, qstart, qend, qseq, evalue, length, pident, mismatch) 
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
-                    '''),
-                    row.qseqid,
-                    row.qacc,
-                    row.qlen,
-                    row.sacc,
-                    row.slen,
-                    row.qstart,
-                    row.qend,
-                    row.evalue,
-                    row.length,
-                    row.pident,
-                    row.mismatch
-                    )
-
-        results[row.qseqid] = [row.qseqid,
-                    row.qacc,
-                    row.qlen,
-                    row.sacc,
-                    row.slen,
-                    row.qstart,
-                    row.qend,
-                    row.evalue,
-                    row.length,
-                    row.pident,
-                    row.mismatch]
+   
 
     conn.close()         
-    return results
+    return blast_run
 
 def main():
     results = blastn()
@@ -104,6 +75,5 @@ for page in pages:
     page.save('myBLAST_alignment.png', 'PNG')
        
 #I guess if you wildin' here's a tar.gz file of the blastn DB
-def make_tarfile(BLAST_results, source_dir):
-    with tarfile.open(BLAST_results, "w:gz") as tar:
-        tar.add(source_dir, arcname = os.path.basename(source_dir))
+tarfile = " ".join(['tar', '-czvf', 'BLAST_results', '/var/www/html/jvo5/final-proj/blastn_results.csv'])
+tar_run = subprocess.run(tarfile)
