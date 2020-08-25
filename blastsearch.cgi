@@ -77,7 +77,7 @@ def blastn():
     return results
 
 def main():
-    results = blastn_path
+    results = blastn()
 
     #I guess I'm running R here
     command = "Rscript"
